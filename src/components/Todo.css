@@ -1,0 +1,15 @@
+#trash-icon{
+    transition: all 0.3s;
+}
+
+#trash-icon:hover{
+    color: #ff5858;
+}
+
+.list-group-item-hover{
+    transition: all 0.3s;
+}
+
+.list-group-item-hover:hover{
+    background-color: rgb(185, 185, 185);
+}

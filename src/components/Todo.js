@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import todologo from '../todo.png';
+import './Todo.css';
 
 export default function Todo() {
 
     const [inputData, setInputData] = useState('');
     const [itemList, setItemList] = useState([]);
 
+    useEffect(() => {
+        setInputData('');
+    }, [itemList]);
+
     const addItem = () => {
         const trimmedInput = inputData.trim();
 
         if (trimmedInput) {
             if (itemList.includes(trimmedInput)) {
-                alert("Task Already Present in the List! Moving it to the top.");
                 const updatedList = [trimmedInput, ...itemList.filter((item) => item !== trimmedInput)];
                 setItemList(updatedList);
             } else {
                 setItemList([trimmedInput, ...itemList]);
             }
         }
-        setInputData('');
     };
 
     const removeItem = (itemToRemove) => {
@@ -27,7 +30,7 @@ export default function Todo() {
     };
 
     const removeAllItem = () => {
-        setItemList('');
+        setItemList([]);
     }
 
     const handleKeyDown = (e) => {
@@ -36,13 +39,17 @@ export default function Todo() {
         }
     };
 
+    const handleTaskClick = (task) => {
+        setInputData(task);
+    };
+
     return (
         <>
             <div className="d-flex justify-content-center mt-5">
                 <div className="container text-center" style={{ width: "25rem" }}>
                     <img src={todologo} className="img-fluid card-img-top" style={{ width: "8rem" }} alt="todo logo" />
                     <div className="card-body">
-                        <h5 className="card-title mt-2">Add your list here</h5>
+                        <h5 className="card-title mt-2">Add Your Tasks Here</h5>
                         <div className="card-text mt-3 input-group">
                             <input
                                 type="text"
@@ -63,11 +70,14 @@ export default function Todo() {
                                 {itemList.map((task, index) => (
                                     <li
                                         key={index}
-                                        className="list-group-item d-flex justify-content-between align-items-center"
+                                        className="list-group-item list-group-item-hover d-flex justify-content-between align-items-center"
+                                        onClick={() => handleTaskClick(task)}
                                     >
-                                        {task}
+                                        <div style={{ maxWidth: '36ch', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                                            {task}
+                                        </div>
                                         <i
-                                            className="bi bi-trash"
+                                            className="bi bi-trash" id="trash-icon"
                                             onClick={() => removeItem(task)}
                                         ></i>
                                     </li>
