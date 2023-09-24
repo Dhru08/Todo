@@ -1,9 +1,14 @@
+import React from 'react'
+import Navbar from './components/Navbar';
+import Todo from './components/Todo';
+
 function App() {
-  return (
-    <>
-      Hello World
-    </>
-  );
+    return (
+        <>
+            <Navbar title="TodoApp"/>
+            <Todo />
+        </>
+    )
 }
 
-export default App;
+export default App
