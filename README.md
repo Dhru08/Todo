@@ -28,7 +28,7 @@ To get started with this Todo Web Application, follow these steps:
 2. **Navigate to the Project Directory:**
 
     ```bash
-    cd todo-web-app
+    cd todo
     ```
 
 3. **Install Dependencies:**
@@ -61,8 +61,3 @@ Now, you're ready to use the Todo Web Application on your local machine.
 
 Contributions are welcome! Feel free to open an issue or submit a pull request to enhance this project.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
-
-Happy task management!
